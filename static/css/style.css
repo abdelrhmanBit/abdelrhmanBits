@@ -75,30 +75,6 @@ video {
         height: 100px;
     }
 }
-
-@media (min-width: 1400px) {
-    section.hero h1 {
-        font-size: 70px;
-    }
-    section.hero img {
-        height: 120px;
-    }
-    section.hero p {
-        font-size: 28px;
-    }
-}
-
-@media (min-width: 1600px) {
-    section.hero h1 {
-        font-size: 80px;
-    }
-    section.hero img {
-        height: 140px;
-    }
-    section.hero p {
-        font-size: 30px;
-    }
-}
 @media (max-width: 991px) {
     section.hero h1 {
         text-align: center;
@@ -131,27 +107,6 @@ video {
 @media (max-width: 767px) {
     section.hero h1 {
         font-size: 25px;
-    }
-    section.hero p {
-        font-size: 18px;
-    }
-}
-
-@media (max-width: 576px) {
-    section.hero h1 {
-        font-size: 22px;
-    }
-    section.hero p {
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    section.hero h1 {
-        font-size: 20px;
-    }
-    section.hero p {
-        font-size: 15px;
     }
 }
 @media (max-width: 576px) {

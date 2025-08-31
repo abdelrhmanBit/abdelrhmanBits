@@ -37,9 +37,6 @@ h1,h2,h3 {
         padding-left: 10px;
         padding-right: 10px;
     }
-    .route-results {
-        max-width: 95%;
-    }
 }
 @media (min-width: 576px) and (max-width: 768px) {
     .container {
@@ -47,59 +44,25 @@ h1,h2,h3 {
         padding-left: 10px;
         padding-right: 10px;
     }
-    .route-results {
-        max-width: 520px;
-    }
 }
 @media (min-width: 768px) and (max-width: 992px) {
     .container {
         width: 720px;
-    }
-    .route-results {
-        max-width: 700px;
     }
 }
 @media (min-width: 992px) and (max-width: 1200px) {
     .container {
         width: 960px;
     }
-    .route-results {
-        max-width: 850px;
-    }
 }
 @media (min-width: 1200px) and (max-width: 1400px) {
     .container {
         width: 1140px;
     }
-    .route-results {
-        max-width: 900px;
-    }
 }
 @media (min-width: 1400px) {
     .container {
         width: 1320px;
-    }
-    .route-results {
-        max-width: 1000px;
-    }
-}
-
-@media (min-width: 1600px) {
-    .container {
-        width: 1400px;
-    }
-    .route-results {
-        max-width: 1100px;
-    }
-    form {
-        max-width: 700px;
-        padding: 35px;
-    }
-    .about img {
-        height: 140px;
-    }
-    .about p {
-        font-size: 22px;
     }
 }
 /* end container */
@@ -545,19 +508,19 @@ input[type = "submit"]:hover {
     }
     form {
         width: 90%;
-        max-width: 500px;
+        max-width: 450px;
         margin: 0 auto 50px auto;
-        padding: 30px;
+        padding: 25px;
     }
     .about img {
-        height: 80px;
+        height: 60px;
     }
     .img {
         display: flex;
         justify-content: center;
     }
     .about p {
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
     }
     main::after {
@@ -565,9 +528,6 @@ input[type = "submit"]:hover {
     }
     form {
         box-shadow: 0 0 0;
-    }
-    .route-results {
-        max-width: 90%;
     }
 }
 @media (max-width: 576px) {
@@ -577,17 +537,9 @@ input[type = "submit"]:hover {
     form {
         padding: 20px;
         gap: 15px;
-        max-width: 100%;
     }
     .route-results {
         margin: 20px auto;
-        max-width: 95%;
-    }
-    .about img {
-        height: 60px;
-    }
-    .about p {
-        font-size: 14px;
     }
 }
 /* end main */
@@ -811,14 +763,6 @@ input[type = "submit"]:hover {
         text-align: center;
         min-width: auto;
     }
-    
-    .route-results {
-        max-width: 95%;
-    }
-    
-    .route-header h3 {
-        font-size: 19px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -837,49 +781,6 @@ input[type = "submit"]:hover {
     
     .route-results {
         margin-top: 20px;
-        max-width: 98%;
-    }
-    
-    .route-header {
-        padding: 15px;
-    }
-    
-    .route-summary span {
-        font-size: 11px;
-        padding: 5px 10px;
-    }
-}
-
-@media (max-width: 320px) {
-    .route-header h3 {
-        font-size: 16px;
-    }
-    
-    .route-summary span {
-        font-size: 10px;
-        padding: 4px 8px;
-    }
-    
-    .segment-info {
-        padding: 12px 15px;
-    }
-    
-    .transport-info i {
-        font-size: 18px;
-        width: 22px;
-    }
-    
-    .transport-details strong {
-        font-size: 14px;
-    }
-    
-    .transport-details small {
-        font-size: 11px;
-    }
-    
-    .from-station,
-    .to-station {
-        font-size: 13px;
     }
 }
 /* end result */
