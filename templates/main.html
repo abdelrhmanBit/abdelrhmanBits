@@ -68,10 +68,12 @@
                         
                         <div class="segment-info">
                             <div class="transport-info">
-                                <i class="fa-solid {% if 'مترو' in segment.transport_type %}fa-train-subway{% elif 'ميكروباص' in segment.transport_type %}fa-bus{% elif 'ترددي' in segment.transport_type %}fa-bus-alt{% else %}fa-route{% endif %}"></i>
+                                <i class="fa-solid {% if 'مترو' in segment.transport_type %}fa-train-subway{% elif 'ميكروباص' in segment.transport_type %}fa-bus{% elif 'ترددي' in segment.transport_type %}fa-bus-alt{% elif 'باص' in segment.transport_type %}fa-bus{% else %}fa-route{% endif %}"></i>
                                 <div class="transport-details">
                                     <strong>{{ segment.transport_type }}</strong>
-                                    <small>{{ segment.line_name }}</small>
+                                    {% if segment.line_name and segment.line_name != 'مترو' %}
+                                        <small>{{ segment.line_name }}</small>
+                                    {% endif %}
                                 </div>
                             </div>
                             

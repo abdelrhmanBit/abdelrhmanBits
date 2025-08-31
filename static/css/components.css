@@ -393,15 +393,16 @@ footer .links ul li a {
 
 /* start main */
 main {
-    height: 100vh;
+    min-height: 100vh;
     background-image: url(../assets/images/request.jpg);
     background-size: cover;
     background-position: center;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     overflow-y: auto;
     padding-top: 120px;
+    padding-bottom: 40px;
 }
 main::after {
     display: block;
@@ -502,6 +503,7 @@ input[type = "submit"]:hover {
         align-items: flex-start;
         height: auto;
         min-height: 100vh;
+        padding-bottom: 30px;
     }
     main .container {
         display: block;
@@ -509,7 +511,7 @@ input[type = "submit"]:hover {
     form {
         width: 90%;
         max-width: 450px;
-        margin: 0 auto 50px auto;
+        margin: 0 auto 40px auto;
         padding: 25px;
     }
     .about img {
@@ -531,6 +533,9 @@ input[type = "submit"]:hover {
     }
 }
 @media (max-width: 576px) {
+    main {
+        padding-bottom: 20px;
+    }
     main .container {
         width: 95%;
     }
@@ -539,7 +544,7 @@ input[type = "submit"]:hover {
         gap: 15px;
     }
     .route-results {
-        margin: 20px auto;
+        margin: 15px auto 25px auto;
     }
 }
 /* end main */
@@ -550,7 +555,7 @@ input[type = "submit"]:hover {
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     overflow: hidden;
-    margin: 30px auto;
+    margin: 20px auto 40px auto;
     max-width: 800px;
     z-index: 1;
     position: relative;
@@ -739,6 +744,10 @@ input[type = "submit"]:hover {
 }
 
 @media (max-width: 768px) {
+    .route-results {
+        margin: 15px auto 25px auto;
+    }
+    
     .route-summary {
         gap: 15px;
     }
@@ -766,6 +775,10 @@ input[type = "submit"]:hover {
 }
 
 @media (max-width: 480px) {
+    .route-results {
+        margin: 15px auto 20px auto;
+    }
+    
     .route-header h3 {
         font-size: 18px;
     }
@@ -777,10 +790,6 @@ input[type = "submit"]:hover {
     
     .segment-info {
         padding: 15px 20px;
-    }
-    
-    .route-results {
-        margin-top: 20px;
     }
 }
 /* end result */
