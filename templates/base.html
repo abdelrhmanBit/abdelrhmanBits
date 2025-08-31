@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    {% block meta %}{% endblock %}
+
+    <!-- import css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    {% block extra_css %}{% endblock %}
+
+    <!-- import font awesome -->
+    <script src="https://kit.fontawesome.com/455479692d.js" crossorigin="anonymous"></script>
+
+    <!-- import google fonts cairo, tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- webpage data -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/Software-Logo.png') }}" type="image/x-icon">
+    <title>{% block title %}وصال{% endblock %}</title>
+</head>
+<body>
+
+    <!-- start header -->
+    <header>
+        <div class="container">
+            <img src="{{ url_for('static', filename='assets/icons/logo.png') }}" alt="wesal logo">
+            <nav>
+                <i class="fa-solid fa-bars" id="togglemenubtn"></i>
+                <ul id="togglemenu">
+                    <li><a href="{{ url_for('index') }}" class="{% block nav_index_active %}{% endblock %}">ما هو وصال؟</a></li>
+                    <li><a href="{{ url_for('main') }}" class="{% block nav_main_active %}{% endblock %}">استخدم وصال</a></li>
+                    <li><a href="{{ url_for('request_route') }}" class="{% block nav_request_active %}{% endblock %}">طلب اضافة مسار</a></li>
+                    <li><a href="{{ url_for('about') }}" class="{% block nav_about_active %}{% endblock %}">من نحن؟</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- end header -->
+
+    {% block content %}{% endblock %}
+
+    <!-- start footer -->
+    <footer>
+        <div class="container">
+            <div class="about">
+                <img src="{{ url_for('static', filename='assets/icons/Software-Logo.png') }}" alt="wassal logo">
+                <div class="text">
+                    <p>وصال هو تطبيق ويب يساعد المستخدمين على إيجاد أفضل مسارات المواصلات العامة في مدنهم بسهولة وسرعة، مع عرض تفاصيل الوقت والتكلفة وخطوات الرحلة، لتوفير الوقت وتقليل التشتت.</p>
+                    <div class="social">
+                        <i class="fa-brands fa-square-facebook"></i>
+                        <i class="fa-brands fa-square-linkedin"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-square-x-twitter"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="links">
+                <ul>
+                    <li><a href="{{ url_for('index') }}" class="{% block nav_index_active_footer %}{% endblock %}">ما هو وصال؟</a></li>
+                    <li><a href="{{ url_for('main') }}" class="{% block nav_main_active_footer %}{% endblock %}">استخدم وصال</a></li>
+                    <li><a href="{{ url_for('request_route') }}" class="{% block nav_request_active_footer %}{% endblock %}">طلب اضافة مسار</a></li>
+                    <li><a href="{{ url_for('about') }}" class="{% block nav_about_active_footer %}{% endblock %}">من نحن؟</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="rights">
+            <p>&copy; 2025 - جميع الحقوق محفوظة لفريق <span>خطوة</span></p>
+        </div>
+    </footer>
+    <!-- end footer -->
+
+    <!-- import javascript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
+
+

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}وصال | اطلب اضافة مسار{% endblock %}
+{% block meta %}
+    <meta name="description" content="وصال هو تطبيق ويب يساعد المستخدمين على إيجاد أفضل مسارات المواصلات العامة في مدنهم بسهولة وسرعة، مع عرض تفاصيل الوقت والتكلفة وخطوات الرحلة، لتوفير الوقت وتقليل التشتت.">
+    <meta name="keywords" content="وصال, المواصلات, وصلني, خطوة, محطة">
+{% endblock %}
+
+{% block nav_request_active %}active{% endblock %}
+
+{% block content %}
+    
+    <!-- start main section -->
+    <main>
+        <div class="container">
+
+            <div class="about">
+                <div class="img">
+                    <img src="{{ url_for('static', filename='assets/icons/logo.png') }}" alt="wassal logo">
+                </div>
+                <p>تعرف مسار مش موجود في التطبيق؟ ساعدنا نطور التطبيق واكتب بيانات المسار</p>
+            </div>
+
+            <form action="#" method="post" id="route-request-form">
+                <div class="start-point">
+                    <label for="from-station">نقطة الانطلاق</label>
+                    <input type="text" name="start" id="from-station" list="from-stations" placeholder="تتحرك منين؟" required>
+                    <datalist id="from-stations">
+                        {% for station in stations %}
+                            <option value="{{station}}">
+                        {% endfor %}
+                    </datalist>
+                </div>
+            
+                <div class="end-point">
+                    <label for="to-station">نقطة الوصول</label>
+                    <input type="text" name="end" id="to-station" list="to-stations" placeholder="تروح فين؟" required>
+                    <datalist id="to-stations">
+                        {% for station in stations %}
+                            <option value="{{ station }}">
+                        {% endfor %}
+                    </datalist>
+                </div>
+
+                <div class="price">
+                    <label for="price">السعر</label>
+                    <input type="number" name="price" id="price" placeholder="السعر بالجنيه" required>
+                </div>
+
+                <div class="transport">
+                    <label for="transport">وسيلة المواصلات</label>
+                    <input type="text" name="transport" id="transport" list="transport-types" placeholder="تركب ايه؟" required>
+                    <datalist id="transport-types">
+                        <option value="مترو">
+                        <option value="ميكروباص">
+                        <option value="اتوبيس ترددي">
+                    </datalist>
+                </div>
+
+
+                <input type="submit" value="إرسال الطلب">
+
+            </form>
+        </div>
+    </main>
+    <!-- end main section -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      (function(){
+        emailjs.init("SW6U2T6z4TwwwwxF5");
+      })();
+    </script>
+
+    {% block extra_js %}
+    <script src="{{ url_for('static', filename='js/email-handler.js') }}"></script>
+    {% endblock %}
+{% endblock %}

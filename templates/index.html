@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block title %}وصال | اعثر على مواصلاتك بسهولة{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block nav_index_active %}active{% endblock %}
+
+{% block content %}
+
+    <!-- start hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-landing">
+                <h1><img src="{{ url_for('static', filename='assets/icons/logo.png') }}" alt="wassal logo"> دليلك للمواصلات</h1>
+                <p>وصال بيعرّفك أسرع وأوفر طريق بالمواصلات عشان توصل مشوارك من غير ما تلف كتير.</p>
+                <div class="try-app">
+                    <a href="#try-app">جرب التطبيق</a>
+                    <i class="fa-solid fa-arrow-left"></i>
+                </div>
+            </div>
+            <div class="video">
+                <video src="{{ url_for('static', filename='assets/videos/landing.mp4') }}" controls></video>
+            </div>
+        </div>
+    </section>
+    <!-- end hero -->
+
+    <!-- start work -->
+    <section class="work">
+        <div class="container">
+            <div class="special">
+                <h2>ازاي تستخدم وصال</h2>
+                <p>استخدم وصال عشان تلف القاهرة بكل سهولة</p>
+            </div>
+            <div class="boxes">
+                <div class="box">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <h3>١. حدد طريقك</h3>
+                    <p>اختار نقطة انطلاقك والمكان اللي انت عاوز تروحه</p>
+                </div>
+                <div class="box">
+                    <i class="fa-solid fa-route"></i>
+                    <h3>٢. اعرف مواصلاتك</h3>
+                    <p>هيظهرلك قائمة بالطرق ووسائل المواصلات المختلفة اللي توصلك</p>
+                </div>
+                <div class="box">
+                    <i class="fa-solid fa-comment-dots"></i>
+                    <h3>٣. لو ملقيتش طريق مناسب</h3>
+                    <p>بلغنا عن طريق طلب اضافة مسار عشان تساعد غيرك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end work -->
+
+    <!-- start features -->
+    <section class="features">
+        <div class="container">
+            <div class="special">
+                <h2>مميزات وصال</h2>
+                <p>اول منصة للبحث عن الموصلات في القاهرة</p>
+            </div>
+            <div class="boxes">
+                <div class="box">
+                    <i class="fa-solid fa-clock"></i>
+                    <h3>مدة الرحلة</h3>
+                    <p>يظهر لك الزمن المتوقع للرحلة</p>
+                </div>
+                <div class="box">
+                    <i class="fa-solid fa-money-check-dollar"></i>
+                    <h3>سعر الرحلة</h3>
+                    <p>يظهر لك السعر الرحلة</p>
+                </div>
+                <div class="box">
+                    <i class="fa-solid fa-road"></i>
+                    <h3>طرق متعددة</h3>
+                    <p>يمكنك الذهاب إلى وجهتك بمختلف وسائل المواصلات</p>
+                </div>
+                <div class="box">
+                    <i class="fa-solid fa-palette"></i>
+                    <h3>واجهة بسيطة</h3>
+                    <p>كل ما عليك ادخاله هو نقطة الانطلاق ونقطة الوصول</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+
+    <!-- start transport options -->
+    <section class="transport">
+        <div class="container">
+            <div class="special">
+                <h2>وصال هيركبك إيه</h2>
+                <p>هركبك كل حاجة في كل حتة في القاهرة</p>
+            </div>
+            <div class="boxes">
+                <div class="box">
+                    <i class="fa-solid fa-train-subway"></i>
+                    <h3>مترو الخط الثالث اخضر</h3>
+                    <p>احدث خطوط مترو القاهرة، سريع، مكيف، من الشرق للغرب</p>
+                </div>
+                <div class="box">
+                    <i class="fa-solid fa-bus"></i>
+                    <h3>الأتوبيس الترددي</h3>
+                    <p>اهرب من زحمة الدائري مع الأتوبيس الترددي، سريع، وبعيد عن الزحام</p>
+                </div>
+                <div class="box">
+                    <i class="fa-solid fa-bus-side"></i>
+                    <h3>ميكروباص</h3>
+                    <p>احد اشهر وسائل المواصلات في القاهرة، ويتميز بالتوفير ولكن يكون بطيئا في الزحام</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end transport options -->
+
+    <!-- start app verions -->
+    <section class="app-version" id="try-app">
+        <div class="container">
+            <h2>
+                <span>جاهز تلف القاهرة؟</span>
+                حمل تطبيق وصال دلوقتي
+            </h2>
+            <div class="versions">
+                <a href="#" class="download-btn">
+                    <i class="fa-brands fa-android"></i>
+                    <p>Google Play (soon...)</p>
+                </a>
+                <a href="#" class="download-btn">
+                    <i class="fa-brands fa-apple"></i>
+                    <p>App Store (soon...)</p>
+                </a>
+                <a href="{{ url_for('main') }}" class="download-btn">
+                    <i class="fa-solid fa-globe"></i>
+                    <p>تطبيق الويب</p>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- end app verions -->
+
+{% endblock %}

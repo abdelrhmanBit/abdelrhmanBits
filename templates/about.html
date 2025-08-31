@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}وصال | من نحن{% endblock %}
+{% block meta %}
+    <meta name="description" content="تعرف على فريق خطوة خلف تطبيق وصال: قائد الواجهة الأمامية، مصمم المحتوى المرئي، مهندس البيانات، والمطور الأساسي.">
+    <meta name="keywords" content="وصال, فريق خطوة, من نحن, المواصلات, القاهرة">
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block nav_about_active %}active{% endblock %}
+
+{% block content %}
+
+    <!-- start team section -->
+    <section class="team">
+        <div class="container">
+            <div class="special">
+                <h2>فريق خطوة</h2>
+                <p>تعرف على الأشخاص وراء فكرة وتنفيذ تطبيق وصال</p>
+            </div>
+
+            <div class="team-cards">
+                <div class="member-card">
+                    <div class="image">
+                        <img src="{{ url_for('static', filename='assets/images/team/abdelrahman-alhaitham.jpg') }}" onerror="this.src='{{ url_for('static', filename='assets/icons/Software-Logo.png') }}'" alt="عبالرحمن الهيثم" loading="lazy">
+                        <div class="social">
+                            <a href="https://www.linkedin.com/in/abdulrahman-alhaytham" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://github.com/abdo13579" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h3>عبالرحمن الهيثم</h3>
+                        <p class="role">Front-End Developer • قائد الفريق</p>
+                        <p class="desc">مسؤول عن تنفيذ واجهة المستخدم والتجربة البصرية للتطبيق، وهو القائد وصاحب فكرة المشروع.</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="image">
+                        <img src="{{ url_for('static', filename='assets/images/team/mohamed-essam.jpg') }}" onerror="this.src='{{ url_for('static', filename='assets/icons/Software-Logo.png') }}'" alt="محمد عصام" loading="lazy">
+                    </div>
+                    <div class="info">
+                        <h3>محمد عصام</h3>
+                        <p class="role">Visual Content Designer</p>
+                        <p class="desc">مسؤول عن تصميم الصور والفيديوهات التوضيحية لعرض فكرة المشروع.</p>
+                        
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="image">
+                        <img src="{{ url_for('static', filename='assets/images/team/yousef-ahmed.jpg') }}" onerror="this.src='{{ url_for('static', filename='assets/icons/Software-Logo.png') }}'" alt="يوسف احمد" loading="lazy">
+                    </div>
+                    <div class="info">
+                        <h3>يوسف احمد</h3>
+                        <p class="role">Data Engineer</p>
+                        <p class="desc">مسؤول عن توفير البنية التحتية لتخزين البيانات وتنظيمها والتي يعتمد عليها المشروع.</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="image">
+                        <img src="{{ url_for('static', filename='assets/images/team/abdelrahman-kareem.jfif') }}" onerror="this.src='{{ url_for('static', filename='assets/icons/Software-Logo.png') }}'" alt="عبدالرحمن كريم" loading="lazy">
+                        <div class="social">
+                            <a href="https://www.linkedin.com/in/abdelrhman-bit/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://github.com/abdelrhmanBit" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h3>عبدالرحمن كريم</h3>
+                        <p class="role">Core Developer</p>
+                        <p class="desc">يشارك في بناء الواجهة الأمامية وتطوير الواجهة الخلفية ويتولى تنظيم الكود وضمان الجودة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end team section -->
+    
+    <!-- start mission section -->
+    <section class="mission">
+        <div class="container">
+            <div class="special">
+                <h2>رسالتنا</h2>
+                <p>لماذا صنعنا وصال؟</p>
+            </div>
+            <div class="mission-panel">
+                <div class="text">
+                    <p>وصال هو حلم راودنا منذ سنوات؛ كنا نعاني يوميًا من صعوبة التنقل في شوارع القاهرة وغياب المعلومات الدقيقة عن وسائل المواصلات.</p>
+                    <p>هدفنا بسيط: جعل التنقل في القاهرة تجربة سهلة، سريعة، وممتعة للجميع، مع أقل قدر من الوقت المهدور.</p>
+                    <p>نحن فريق <span>خطوة</span> نعمل باستمرار على تطوير وصال وتحسينه، لأننا نؤمن أن كل خطوة تصنع فرقًا.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end mission section -->
+
+{% endblock %}

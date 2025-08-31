@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}وصال | استخدم التطبيق{% endblock %}
+{% block meta %}
+    <meta name="description" content="وصال هو تطبيق ويب يساعد المستخدمين على إيجاد أفضل مسارات المواصلات العامة في مدنهم بسهولة وسرعة، مع عرض تفاصيل الوقت والتكلفة وخطوات الرحلة، لتوفير الوقت وتقليل التشتت.">
+    <meta name="keywords" content="وصال, المواصلات, وصلني, خطوة, محطة">
+{% endblock %}
+
+{% block nav_main_active %}active{% endblock %}
+
+{% block content %}
+
+    <!-- start main section -->
+    <main>
+        <div class="container">
+
+            <div class="about">
+                <div class="img">
+                    <img src="{{ url_for('static', filename='assets/icons/logo.png') }}" alt="wassal logo">
+                </div>
+                <p>عايز تروح فين؟ قولنا ووصال هيكون صديقك طول الرحلة</p>
+            </div>
+
+            <form action="{{ url_for('main') }}" method="post" id="route-request-form">
+                <div class="start-point">
+                    <label for="from-station">نقطة الانطلاق</label>
+                    <input type="text" name="start" id="from-station" list="from-stations" placeholder="تتحرك منين؟" required>
+                    <datalist id="from-stations">
+                        {% for station in stations %}
+                            <option value="{{station}}">
+                        {% endfor %}
+                    </datalist>
+                </div>
+            
+                <div class="end-point">
+                    <label for="to-station">نقطة الوصول</label>
+                    <input type="text" name="end" id="to-station" list="to-stations" placeholder="تروح فين؟" required>
+                    <datalist id="to-stations">
+                        {% for station in stations %}
+                            <option value="{{ station }}">
+                        {% endfor %}
+                    </datalist>
+                </div>
+            
+                <input type="submit" value="بحث عن مسار">
+            </form>
+
+            {% if route_data %}
+            <div class="route-results">
+                <div class="route-header">
+                    <h3>مسارك من {{ route_data.start }} إلى {{ route_data.end }}</h3>
+                    <div class="route-summary">
+                        <span class="price">{{ price }} جنيه</span>
+                        <span class="stations">{{ route_data.total_stations }} محطة</span>
+                        <span class="transfers">{{ route_data.total_transfers }} تحويل</span>
+                    </div>
+                </div>
+
+                <div class="route-segments">
+                    {% for segment in route_data.segments %}
+                    <div class="segment {% if segment.is_transfer %}transfer-segment{% endif %}">
+                        {% if segment.is_transfer %}
+                        <div class="transfer-indicator">
+                            <i class="fa-solid fa-exchange-alt"></i>
+                            <span>تحويل</span>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="segment-info">
+                            <div class="transport-info">
+                                <i class="fa-solid {% if 'مترو' in segment.transport_type %}fa-train-subway{% elif 'ميكروباص' in segment.transport_type %}fa-bus{% elif 'ترددي' in segment.transport_type %}fa-bus-alt{% else %}fa-route{% endif %}"></i>
+                                <div class="transport-details">
+                                    <strong>{{ segment.transport_type }}</strong>
+                                    <small>{{ segment.line_name }}</small>
+                                </div>
+                            </div>
+                            
+                            <div class="station-info">
+                                <div class="from-station">
+                                    <i class="fa-solid fa-circle-dot"></i>
+                                    <span>{{ segment.from }}</span>
+                                </div>
+                                <div class="route-line"></div>
+                                <div class="to-station">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>{{ segment.to }}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="segment-stats">
+                                <span class="stations-count">{{ segment.stations_count }} محطة</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="route-footer">
+                    <p><i class="fa-solid fa-info-circle"></i> المسار يتضمن {{ route_data.total_transfers }} تحويل{% if route_data.total_transfers != 1 %}ات{% endif %}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if error %}
+            <div class="error-message">
+                <i class="fa-solid fa-exclamation-triangle"></i>
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+    <!-- end main section -->
+
+{% endblock %}
