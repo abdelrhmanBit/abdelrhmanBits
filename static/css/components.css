@@ -145,6 +145,13 @@ a.active {
 header img {
     height: 40px;
 }
+
+/* sidebar logo is hidden by default (desktop) — shown only inside the mobile sidebar media query */
+.sidebar-logo-img {
+    display: none;
+    height: 40px;
+    width: auto;
+}
 header nav ul.open li{
     animation: menuItemIn 0.35s ease forwards;
 }
@@ -216,6 +223,9 @@ header nav ul.open li:nth-child(4){ animation-delay: 0.18s; }
         display: block;
         filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
     }
+
+    /* show sidebar logo inside mobile sidebar */
+    .sidebar-logo-img { display: block; }
 
 /* explicit sidebar logo sizing utility */
 .sidebar-logo-img {

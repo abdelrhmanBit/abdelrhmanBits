@@ -32,6 +32,10 @@
             <nav>
                 <i class="fa-solid fa-bars" id="togglemenubtn"></i>
                 <ul id="togglemenu">
+                    <li class="menu-logo">
+                        <img src="{{ url_for('static', filename='assets/icons/logo.png') }}" alt="وصال" class="sidebar-logo-img hb-hide-temp" />
+                        <!-- sidebar logo path: static/assets/icons/logo.png -->
+                    </li>
                     <li><a href="{{ url_for('index') }}" class="{% block nav_index_active %}{% endblock %}">ما هو وصال؟</a></li>
                     <li><a href="{{ url_for('main') }}" class="{% block nav_main_active %}{% endblock %}">استخدم وصال</a></li>
                     <li><a href="{{ url_for('request_route') }}" class="{% block nav_request_active %}{% endblock %}">طلب اضافة مسار</a></li>
@@ -40,8 +44,6 @@
             </nav>
         </div>
     </header>
-
-                    </li>
     <!-- end header -->
 
     {% block content %}{% endblock %}
@@ -81,6 +83,5 @@
     {% block extra_js %}{% endblock %}
 </body>
 </html>
-
 
 
