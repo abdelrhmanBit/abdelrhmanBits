@@ -1,15 +1,20 @@
 const toggleMenu = document.getElementById("togglemenu");
 const toggleBtn = document.getElementById("togglemenubtn");
 
-// inject logo inside the mobile sidebar (once)
-if (toggleMenu && !toggleMenu.querySelector('.menu-logo')) {
-    const logoItem = document.createElement('li');
-    logoItem.className = 'menu-logo';
-    const logoImg = document.createElement('img');
-    logoImg.src = 'assets/icons/logo.png';
-    logoImg.alt = 'wesal logo';
-    logoItem.appendChild(logoImg);
-    toggleMenu.insertBefore(logoItem, toggleMenu.firstChild);
+// The sidebar logo is provided by the server-rendered template (li.menu-logo).
+// We do not inject a relative-path image here to avoid wrong src resolution.
+
+// create a body-level overlay logo that we can position independently
+let overlayLogo = document.getElementById('menu-logo-overlay');
+if (!overlayLogo) {
+    overlayLogo = document.createElement('img');
+    overlayLogo.id = 'menu-logo-overlay';
+    overlayLogo.alt = 'wesal logo';
+    overlayLogo.style.position = 'fixed';
+    overlayLogo.style.display = 'none';
+    overlayLogo.style.pointerEvents = 'none';
+    overlayLogo.style.zIndex = '2100';
+    document.body.appendChild(overlayLogo);
 }
 
 function alignMenuLogoToHeader() {
@@ -20,18 +25,53 @@ function alignMenuLogoToHeader() {
     if (!headerLogo || !menuLogoItem || !menuLogoImg) return;
 
     const rect = headerLogo.getBoundingClientRect();
-    const rightOffset = Math.max(0, window.innerWidth - rect.right);
+    // compute header logo center and center the sidebar logo on that X coordinate
+    const centerX = rect.left + rect.width / 2;
 
     menuLogoItem.classList.add('fixed-align');
     Object.assign(menuLogoImg.style, {
         position: 'fixed',
         top: rect.top + 'px',
-        right: rightOffset + 'px',
+        left: centerX + 'px',
+        transform: 'translateX(-50%)',
         height: rect.height + 'px',
         width: 'auto',
-        zIndex: '1300',
+        zIndex: '2100', // ensure it's above the header
         pointerEvents: 'none'
     });
+
+    // resolve header logo src to an absolute URL (handles relative src when viewing file://)
+    let headerSrc = headerLogo.getAttribute && headerLogo.getAttribute('src') ? headerLogo.getAttribute('src') : headerLogo.src;
+    let resolvedSrc;
+    try {
+        resolvedSrc = headerSrc ? new URL(headerSrc, window.location.href).href : (menuLogoImg.src || '');
+    } catch (e) {
+        resolvedSrc = headerLogo.src || menuLogoImg.src || '';
+    }
+
+    overlayLogo.alt = headerLogo.alt || menuLogoImg.alt || overlayLogo.alt;
+    overlayLogo.style.top = rect.top + 'px';
+    overlayLogo.style.left = centerX + 'px';
+    overlayLogo.style.transform = 'translateX(-50%)';
+    overlayLogo.style.height = rect.height + 'px';
+    overlayLogo.style.width = 'auto';
+
+    // only show overlay and hide sidebar image if the overlay actually loads
+    overlayLogo.onload = function() {
+        overlayLogo.style.display = 'block';
+        // hide the menu image inside the sidebar to avoid duplicate visuals using CSS class
+        try { menuLogoImg.classList.add('hidden'); } catch (e) {}
+    };
+    overlayLogo.onerror = function() {
+        // failed to load overlay — keep sidebar image visible and hide overlay
+        overlayLogo.style.display = 'none';
+        overlayLogo.onload = null;
+        overlayLogo.onerror = null;
+        try { menuLogoImg.classList.remove('hidden'); } catch (e) {}
+    };
+
+    // set src last to trigger load handlers
+    overlayLogo.src = resolvedSrc;
 }
 
 function resetMenuLogoAlignment() {
@@ -43,12 +83,27 @@ function resetMenuLogoAlignment() {
     Object.assign(menuLogoImg.style, {
         position: '',
         top: '',
+        left: '',
         right: '',
+        transform: '',
         height: '',
         width: '',
         zIndex: '',
         pointerEvents: ''
     });
+
+    // hide overlay and restore sidebar image visibility
+    if (overlayLogo) {
+        overlayLogo.style.display = 'none';
+        overlayLogo.style.top = '';
+        overlayLogo.style.left = '';
+        overlayLogo.style.transform = '';
+        overlayLogo.style.height = '';
+        overlayLogo.style.width = '';
+    }
+    if (menuLogoImg) {
+        try { menuLogoImg.classList.remove('hidden'); } catch (e) {}
+    }
 }
 
 // ensure overlay exists once
